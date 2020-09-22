@@ -9,7 +9,7 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=build /app/bin /app/bin
 
-ENV LISTEN_ADDRESS=0.0.0.0
+ENV LISTEN_ADDRESS=rabbitProxy
 ENV LISTEN_PORT=5673
-ENV AMQP_URL=amqp://127.0.0.1:5672
+ENV AMQP_URL=amqp://rabbitmq:5672
 CMD bin/amqproxy -l $LISTEN_ADDRESS -p $LISTEN_PORT $AMQP_URL
